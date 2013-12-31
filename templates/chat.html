@@ -1,0 +1,52 @@
+{% extends "shared/base.html" %}
+{% block content %}
+
+	<div class="row">
+		<h1>Enregistrer et lire en BDD</h1>
+		<p>A chaque pression du bouton ci-dessous, une message "chat" pré-écrit sera enregistré dans la BDD avec les attributs suivant :</p>
+
+		<ul>
+			<li>auteur : WHOCARES</li>
+			<li>texte : Une valeur aléatoire comprise entre 0 et 1.000.000</li>
+			<li>date : au moment de la création au format jj/mm/aaaa.</li>
+		</ul>
+
+
+		<p class="pull-right"><a href="add_one_chat.php" class="btn btn-primary btn-large">Ajouter un message</a></p>
+
+		<h3>Les 10 derniers messages</h3>
+		<table class="table table-striped">
+		<tr>
+			<td><strong>Date</strong></td>
+			<td><strong>Auteur</strong></td>
+		</tr>
+		{% for chat in chats %}
+			<tr>
+				<td>{{chat.date|date("d/m/Y")}} </td>{# utilisation du filtre date la mise en forme #}
+				<td>{{chat.texte}}</td>
+			</tr>
+		{% endfor %}
+		</table>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<strong>Message de oyo, un test</strong>
+		{{chat_oyo.texte}}
+	</div>
+
+	<div class="row">
+		<h3>Le code en détail</h3>
+		<h4>Pour écrire en BDD</h4>
+		<pre>
+{{code_write_bdd|e('html')}}
+		</pre>
+		<h4>Pour Lire le BDD</h4>
+		<pre>
+{{code_read_bdd|e('html')}}
+		</pre>
+	</div>
+
+
+{% endblock %}
