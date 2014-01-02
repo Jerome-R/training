@@ -1,0 +1,30 @@
+{% extends "shared/base.html" %}
+{% block content %}
+
+	<div class="row">
+		<h1>Mini-chat</h1>
+		<p>Vous pouvez chatter ici :</p>
+
+		<form action="add_one_chat.php?d=true" method="post">
+		  <fieldset>
+		    <legend>Mini-chat</legend>
+		    <label for="auteur">Auteur</label>
+		    <input name="auteur" id="auteur" type="text" placeholder="Pseudo">
+		    <label for="message">Message</label>
+		    <textarea name="message" id="message" type="text" placeholder="Ecrire un message…"></textarea> 
+		    <button type="submit" class="btn">Envoyer</button>
+		  </fieldset>
+		</form>
+
+		<h3>Les 10 derniers messages</h3>
+		<div>
+			{% for chat in chats %}
+				<p>{{chat.auteur}}, le {{chat.date|date("d/m/Y")}}</p>
+				<p>{{chat.texte}}</p>
+				<hr>
+			{% endfor %}
+		</div>
+
+	</div>
+
+{% endblock %}
