@@ -1,3 +1,4 @@
+{# mini-chat.html #}
 {% extends "shared/base.html" %}
 {% block content %}
 
@@ -5,24 +6,51 @@
 		<h1>Mini-chat</h1>
 		<p>Vous pouvez chatter ici :</p>
 
-		<form action="add_one_chat.php?d=true" method="post">
+		<!-- Formulaire, on appel la page add_one_chat.php qui gère la réception
+			 des données du formulaire puis envoi la requête SQL à la BDD -->
+		<form class="form-horizontal" action="add_one_chat.php?d=true" method="post">
 		  <fieldset>
 		    <legend>Mini-chat</legend>
-		    <label for="auteur">Auteur</label>
-		    <input name="auteur" id="auteur" type="text" placeholder="Pseudo">
-		    <label for="message">Message</label>
-		    <textarea name="message" id="message" type="text" placeholder="Ecrire un message…"></textarea> 
-		    <button type="submit" class="btn">Envoyer</button>
+		    <div class="control-group">
+			    <label class="control-label" for="auteur">Auteur</label>
+			    <div class="controls">
+			    	<input name="auteur" id="auteur" type="text" placeholder="Pseudo">
+			    </div>
+			 </div>
+			 <div class="control-group">
+		    	<label class="control-label" for="message">Message</label>
+		    	<div class="controls">
+			    	<textarea name="message" id="message" type="text" placeholder="Ecrire un message…"></textarea> 
+			    </div>
+			    <div class="control-group">
+			    	<div class="controls">
+			   			<button type="submit" class="btn">Envoyer</button>
+			   		</div>
+			   	</div>
+		    </div>
 		  </fieldset>
 		</form>
 
-		<h3>Les 10 derniers messages</h3>
+		<h3>Les 10 derniers messages <a href="chat.php?d=true"><button><i class="icon-refresh"></i></button></a></h3>
 		<div>
 			{% for chat in chats %}
 				<p>{{chat.auteur}}, le {{chat.date|date("d/m/Y")}}</p>
 				<p>{{chat.texte}}</p>
 				<hr>
 			{% endfor %}
+		</div>
+		<div>
+			{% for i in range(1, pages) %}
+				<a href="chat.php?d=true&amp;page={{i}}"><button>{{i}}</button></a>
+			{% endfor %}
+		</div>
+
+		<div>
+			<h3>Le code en détail</h3>
+			<h4>Formulaire HTML</h4>
+			<pre class="line-numbers" data-start="1"><code class="language-markup">{{code_html_form|e('html')}}</code></pre>
+			<h4>Pour écrire en BDD en récupérent les données via un formulaire</h4>
+			<pre class="line-numbers" data-start="1"><code class="language-php">{{code_write_bdd|e('html')}}</code></pre>
 		</div>
 
 	</div>

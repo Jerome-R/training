@@ -26,14 +26,17 @@ else{
 	$file='sql/write_dynamic.php'; 
 	$contenu=file_get_contents($file);
 
-	$file2='sql/read_static.php'; 
-	$contenu2=file_get_contents($file2); 
+	$file2='templates/mini-chat.html'; 
+	$contenu2=file_get_contents($file2);
+
+	$pages = ceil($count / $pagination);
 
 	//Appel de la vue
 	$template = $twig->loadTemplate('mini-chat.html');
 	echo $template->render(array(
 	    'chats' => $donnees,
 	    'code_write_bdd' => $contenu,
-	    'code_read_bdd' => $contenu2
+	    'code_html_form' => $contenu2,
+	    'pages' => $pages
 	    )); 
 }

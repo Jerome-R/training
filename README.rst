@@ -17,6 +17,7 @@ Plus d'informations
 ----------------
 
 © Jérôme Rabahi - 2014
+
 Visiter mon `Portfolio`_ for plus d'informations.
 
 .. _Portfolio: http://jr-graph.fr

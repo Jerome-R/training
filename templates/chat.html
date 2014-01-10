@@ -14,7 +14,7 @@
 
 		<p class="pull-right"><a href="add_one_chat.php" class="btn btn-primary btn-large">Ajouter un message</a></p>
 
-		<h3>Les 10 derniers messages</h3>
+		<h3>Les 10 derniers messages <a href="chat.php"><button><i class="icon-refresh"></i></button></a></h3> 
 		<table class="table table-striped">
 		<tr>
 			<td><strong>Date</strong></td>
@@ -39,12 +39,9 @@
 	<div class="row">
 		<h3>Le code en détail</h3>
 		<h4>Pour écrire en BDD</h4>
-		<pre>
-{{code_write_bdd|e('html')}}
-		</pre>
+		<pre class="line-numbers" data-start="1"><code class="language-php">{{code_write_bdd|e('html')}}</code></pre>
 		<h4>Pour Lire le BDD</h4>
-		<pre>
-{{code_read_bdd|e('html')}}
+		<pre class="line-numbers" data-start="1"><code class="language-php">{{code_read_bdd|e('html')}}</code></pre>
 		</pre>
 	</div>
 
